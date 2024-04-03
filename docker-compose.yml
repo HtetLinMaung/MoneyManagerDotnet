@@ -5,7 +5,7 @@ services:
     image: htetlinmaung/money_manager
     restart: always
     ports:
-      - "80:80"
+      - "5273:80"
     environment:
       - Logging__LogLevel__Default=Information
       - Logging__LogLevel__Microsoft.AspNetCore=Warning
