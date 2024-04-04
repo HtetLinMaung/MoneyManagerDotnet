@@ -10,7 +10,7 @@ services:
       - Logging__LogLevel__Default=Information
       - Logging__LogLevel__Microsoft.AspNetCore=Warning
       - AllowedHosts=*
-      - ConnectionStrings__AzureSqlDb=Server=azuresql,1433;Database=MMDB;User ID=sa;Password=P@ssword;Encrypt=false;TrustServerCertificate=true;
+      - ConnectionStrings__PostgresDb=Host=postgres;Port=5432;Database=mmdb;Username=postgres;Password=P@ssword;
       - JwtSettings__Secret=d8916dbfb041caebcfa66f0e36679ddcd8dca9c7fc8dac686551fd6515f906cd
   # azuresql:
   #   image: mcr.microsoft.com/azure-sql-edge
