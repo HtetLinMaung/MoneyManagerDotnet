@@ -20,7 +20,7 @@ services:
       - MSSQL_SA_PASSWORD=P@ssword
       - ACCEPT_EULA=1
     volumes:
-      - azuresqldb:/var/opt/mssql
+      - sqldb:/var/opt/mssql
 
 volumes:
-  azuresqldb:
+  sqldb:
