@@ -12,15 +12,26 @@ services:
       - AllowedHosts=*
       - ConnectionStrings__AzureSqlDb=Server=azuresql,1433;Database=MMDB;User ID=sa;Password=P@ssword;Encrypt=false;TrustServerCertificate=true;
       - JwtSettings__Secret=d8916dbfb041caebcfa66f0e36679ddcd8dca9c7fc8dac686551fd6515f906cd
-  azuresql:
-    image: mcr.microsoft.com/azure-sql-edge
+  # azuresql:
+  #   image: mcr.microsoft.com/azure-sql-edge
+  #   ports:
+  #     - "1433:1433"
+  #   environment:
+  #     - MSSQL_SA_PASSWORD=P@ssword
+  #     - ACCEPT_EULA=1
+  #   volumes:
+  #     - sqldb:/var/opt/mssql
+  postgres:
+    image: postgres:alpine3.16
+    restart: always
     ports:
-      - "1433:1433"
+      - "5433:5432"
+    command: postgres -c 'max_connections=16500'
     environment:
-      - MSSQL_SA_PASSWORD=P@ssword
-      - ACCEPT_EULA=1
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=P@ssword
     volumes:
-      - sqldb:/var/opt/mssql
+      - mmpostgres:/var/lib/postgresql/data
 
 volumes:
-  sqldb:
+  mmpostgres:
