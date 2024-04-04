@@ -53,6 +53,7 @@ namespace MoneyManager.Models
             // Calculate total income and expense
             var totalIncome = await query.Where(ft => ft.Type == TransactionType.Income).SumAsync(ft => ft.Amount);
             var totalExpense = await query.Where(ft => ft.Type == TransactionType.Expense).SumAsync(ft => ft.Amount);
+            var balance = totalIncome - totalExpense;
 
             // Get the total count for the filtered data
             var totalCount = await query.CountAsync();
@@ -71,6 +72,7 @@ namespace MoneyManager.Models
                 PageCounts = pageCounts,
                 TotalIncome = totalIncome,
                 TotalExpense = totalExpense,
+                Balance = balance,
                 Message = "Financial transactions fetehed successfully."
             };
         }

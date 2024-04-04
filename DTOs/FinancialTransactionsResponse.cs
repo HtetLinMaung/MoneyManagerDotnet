@@ -8,5 +8,7 @@ namespace MoneyManager.DTOs
         public decimal TotalIncome { get; set; } = 0M;
         public decimal TotalExpense { get; set; } = 0M;
 
+        public decimal Balance { get; set; } = 0M;
+
     }
 }
